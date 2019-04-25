@@ -1,4 +1,4 @@
-#Exercicios terminal Linux
+# Exercicios terminal Linux
 
 1. Utilize o comando echo para imprimir seu nome no terminal.
 ```bash
