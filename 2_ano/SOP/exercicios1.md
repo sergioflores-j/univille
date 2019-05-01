@@ -55,11 +55,15 @@ rmdir clientes
 ./cliente.script
 ```
 
-10. Execute o comando cal. Observe o resultado. Execute o comando echo|cal > hoje.txt. Utilize o comandos ls e less para conferir o resultado. O que ocorreu? Qual a função do operador — ? @TODO
+10. Execute o comando cal. Observe o resultado. Execute o comando echo|cal > hoje.txt. Utilize o comandos ls e less para conferir o resultado. O que ocorreu? Qual a função do operador | ?
 ```bash
+cal
 echo | cal > hoje.txt
 ls
-less
+less hoje.txt
+```
+```
+O operador | (pipe) envia o resultado do comando anterior ao próximo.
 ```
 
 11. Utilize o comando wget para baixar o arquivo cidades_sc.txt no endereço https://gist.githubusercontent.com/leandersonandre/c8cba982f42262591be628e5397d1c3f/raw/bd13a3e13823708e477f99f9285f845b292714c6/cidades_sc.txt.
@@ -68,11 +72,6 @@ wget https://gist.githubusercontent.com/leandersonandre/c8cba982f42262591be628e5
 ```
 
 12. Execute o comando grep Balneario cidades_sc.txt. Qual é o resultado?
-R:
-```
-O resultado do grep será os textos(cidades) que possuem a palavra Balneario. 
-```
-
 ```bash
 ~$ grep Balneario cidades_sc.txt
 ```
@@ -82,15 +81,18 @@ Balneario Barra do Sul
 Balneario Camboriu
 Balneario Gaivota
 ```
-
+R:
+```
+O resultado do grep será os textos(cidades) que possuem a palavra Balneario. 
+```
 
 13. Execute o comando grep balneario cidades_sc.txt. Qual é o resultado?
-```
-O resultado do grep será os textos(cidades) que possuem a palavra balneario (case sensitive). 
-```
-
 ```bash
 ~$ grep balneario cidades_sc.txt
+```
+R:
+```
+O resultado do grep será os textos(cidades) que possuem a palavra balneario (case sensitive). 
 ```
 
 14. Execute o comando grep ”do Sul”cidades_sc.txt. Qual é o resultado?
@@ -135,4 +137,78 @@ tar -cf compactado.tar balneario.txt
 18. Descompacte o arquivo compactado.tar com o comando tar.
 ```bash
 tar -xf compactado.tar
+```
+
+# Exercícios Shell Script
+
+1. Crie um script que solicite ao usuário digitar o seu nome e imprime o conteúdo no terminal.
+
+```shell
+#!/bin/bash
+
+echo -n "Digite seu nome: "
+read name
+echo "Bom dia $name"
+```
+
+2. Crie um script que multiplique dois números que o usuário informar.
+
+```shell
+#!/bin/bash
+
+echo -n "Digite o primeiro número: "
+read n1
+echo -n "Digite o segundo número: "
+read n2
+res=$[$n1*$n2]
+echo "O resultado é $res"
+```
+
+3. Crie um script que identifique se o usuário informou um número positivo, negativo ou zero.
+```shell
+#!/bin/bash
+echo -n "Digite o número: "
+read number
+
+if [ $number -gt 0 ]; then
+    echo "Positivo"
+elif [ $number -eq 0 ]; then
+    echo "Zero"
+else
+    echo "Negativo"
+fi
+```
+
+4. Crie um script resolva a tabuada do número informado pelo usuário.
+```shell
+#!/bin/bash
+echo -n "Digite o número: "
+read number
+
+c=0
+while [ $c -lt 11 ]; do
+    r=$[$number*$c]
+    echo "$number x $c = $r" 
+    c=$[$c+1]
+done
+```
+
+5. Crie um script que apresente duas opções ao usuário. A primeira opção deverá mostrar o calendário. A segunda opção deve mostrar a lista de arquivos do diretório.
+```shell
+#!/bin/bash
+o1="Mostrar calendário"
+o2="Mostrar lista de arquivos do diretório"
+echo -e "Opções: \n[1] $o1 \n[2] $o2"
+echo -n "Digite a opção: "
+read option
+
+if [ $option -eq 1 ]; then
+    echo -e "\n$o1\n"
+    cal
+elif [ $option -eq 2 ]; then
+    echo -e "\n$o2\n"
+    ls
+else 
+    echo -e "\nOpção inválida"
+fi
 ```
