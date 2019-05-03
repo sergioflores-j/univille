@@ -141,7 +141,7 @@
     - Atributos
     - Métodos
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
-    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilizades são: \
+    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilidades são: \
     > \+ público: visível em qualquer classe \
     > \# protegido: visivel para as classes filhas \
     > \- privado: visível somente dentro da classe
@@ -149,10 +149,14 @@
     | Nome da classe |
     | -------------- |
     | - nome         |
-    | + getNome() <br> + setNome() |
-     
+
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
-    > @TODO
+    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do método em camelCase e os parenteses. As visibilidades são as mesmas dos atributos.
+    
+    | Nome da classe |
+    | -------------- |
+    | - nome         |
+    | + getNome() <br> + setNome() |
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
     > @TODO
 1. Quais são os símbolos utilizados no diagrama de classe UML para representar os modificadores de acessos ao atributos e métodos? Crie um exemplo.
