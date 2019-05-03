@@ -72,6 +72,17 @@
     ```
 1. Crie um exemplo de instanciação da classe Aluno. Utilize o construtor padrão
     ```java
+    // Aluno.java
+    public class Aluno {
+        public String nome;
+        public String matricula;
+
+        public Aluno() {
+
+        }
+    }
+
+    // Main.java
     public class Main {
         public static void main(String[] args) {
             public Aluno aluno = new Aluno();
@@ -79,4 +90,69 @@
     }
     ```
 1. O que é encapsulamento?
+    > Encapsulamento vem de encapsular, ou seja, separar o programa em partes, o mais isolado possível. E, serve para controlar o acesso aos atributos e métodos de uma classe.
+1. Qual é o objetivo do modificador de acesso public?
+    > Possibilitar o acesso de algo (atributo, método, ...) de dentro de uma classe de forma pública.
+1. Qual é o objetivo do modificador de acesso private?
+    > Bloquear o acesso de algo (atributo, método, ...) de dentro de uma classe por outra classe externa.
+1. Como é aplicado o encapsulamento em uma classe? Considere a classe Aluno com o atributo matrícula.
+    > É colocado os atributos da classe de forma `private`, para que não haja acesso externo direto, e é criado métodos de acesso para alteração e busca (get e set).
+
+    ```java
+    public class Aluno {
+        private String matricula;
+
+        public String getMatricula() {
+            return this.matricula;
+        }
+        public void setMatricula(String matricula) {
+            this.matricula = matricula;
+        }
+    }
+    ```
+1. Qual o objetivo dos métodos getters? Crie um exemplo
+    > Criar um meio de acesso para visualização do conteúdo de um atributo privado. Exemplo:
+    ```java
+    public class Aluno {
+        private String matricula;
+
+        public String getMatricula() {
+            return this.matricula;
+        }
+    }
+    ```
+1. Qual o objetivo dos métodos setters? Crie um exemplo.
+    > Criar um meio de acesso para alteração do conteúdo de um atributo privado. Exemplo:
+    ```java
+    public class Aluno {
+        private String matricula;
+
+        public void setMatricula(String matricula) {
+            this.matricula = matricula;
+        }
+    }
+    ```
+1. O diagrama de classe UML é composto por 3 partes. O que vai em cada parte?
+    - Nome da classe
+    - Atributos
+    - Métodos
+1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
+    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilizades são: \
+    > + público: visível em qualquer classe \
+    > # protegido: visivel para as classes filhas \
+    > - privado: visível somente dentro da classe \
+    Nome da classe | 
+    ------------ | 
+    - nome | 
+    + getNome() | 
+     
+1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
+    > @TODO
+1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
+    > @TODO
+1. Quais são os símbolos utilizados no diagrama de classe UML para representar os modificadores de acessos ao atributos e métodos? Crie um exemplo.
+    > @TODO
+1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
+    > @TODO
+1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
     > @TODO
