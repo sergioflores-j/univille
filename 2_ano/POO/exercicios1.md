@@ -21,6 +21,7 @@
     1. Carroeletrico
     1. CarroEletrico
     1. carro_eletrico
+    R:
     > 4. CarroEletrico
 1. Qual é o padrão utilizado para nomear os atributos? Cite um exemplo.
     > Deve seguir o padrão camelCase onde a primeira letra de cada palavra deve ser em maiúscula. Exemplo: dataEmissao
@@ -31,6 +32,7 @@
     1. _cor_de_fundo
     1. _corDeFundo
     1. mCorDeFundo
+    R: 
     > 3. corDeFundo
 1. Qual é o padrão utilizado para nomear os métodos? Cite um exemplo.
     > O nome deve especificar exatamente a ação executada pelo método, em alguns casos o nome do método deve iniciar por um verbo. Deve seguir o padrão camelCase. Exemplo: abrirJanela()
@@ -41,6 +43,7 @@
     1. EstaVazio
     1. Estavazio
     1. Esta_vazio
+    R: 
     > 1. estaVazio
 1. No contexto de orientação à objetos, o que é um objeto? Em que momento existe um objeto? Quando ele deixa de existir?
     > É uma instância de uma classe. @TODO
@@ -67,3 +70,13 @@
         }
     }
     ```
+1. Crie um exemplo de instanciação da classe Aluno. Utilize o construtor padrão
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            public Aluno aluno = new Aluno();
+        }
+    }
+    ```
+1. O que é encapsulamento?
+    > @TODO
