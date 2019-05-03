@@ -146,10 +146,10 @@
     > \# protegido: visivel para as classes filhas \
     > \- privado: visível somente dentro da classe
 
-    Nome da classe | Col2
-    --- | ---
-    - nome | col2
-    + getNome() | col2
+    | Nome da classe |
+    | -------------- |
+    | - nome         |
+    | + getNome()    |
      
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
     > @TODO
