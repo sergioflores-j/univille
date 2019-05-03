@@ -149,7 +149,7 @@
     | Nome da classe |
     | -------------- |
     | - nome         |
-    | + getNome()    |
+    | + getNome() \ + setNome() |
      
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
     > @TODO
