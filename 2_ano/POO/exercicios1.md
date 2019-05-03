@@ -142,9 +142,10 @@
     - Métodos
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
     > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilizades são: \
-    > + público: visível em qualquer classe \
+    > \+ público: visível em qualquer classe \
     > \# protegido: visivel para as classes filhas \
-    > - privado: visível somente dentro da classe \
+    > \- privado: visível somente dentro da classe
+
     Nome da classe | 
     ------------ | 
     - nome | 
