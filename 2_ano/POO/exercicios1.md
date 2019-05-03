@@ -21,8 +21,9 @@
     1. Carroeletrico
     1. CarroEletrico
     1. carro_eletrico
-    R:
-    > 4. CarroEletrico
+    ```
+    4. CarroEletrico
+    ```
 1. Qual é o padrão utilizado para nomear os atributos? Cite um exemplo.
     > Deve seguir o padrão camelCase onde a primeira letra de cada palavra deve ser em maiúscula. Exemplo: dataEmissao
 1. Qual opção apresenta corretamente o nome do atributo cor de fundo?
@@ -32,8 +33,10 @@
     1. _cor_de_fundo
     1. _corDeFundo
     1. mCorDeFundo
-    R: 
-    > 3. corDeFundo
+    
+    ```
+    3. corDeFundo
+    ```
 1. Qual é o padrão utilizado para nomear os métodos? Cite um exemplo.
     > O nome deve especificar exatamente a ação executada pelo método, em alguns casos o nome do método deve iniciar por um verbo. Deve seguir o padrão camelCase. Exemplo: abrirJanela()
 1. Qual opção apresenta corretamente o nome do método está vazio?
@@ -43,8 +46,9 @@
     1. EstaVazio
     1. Estavazio
     1. Esta_vazio
-    R: 
-    > 1. estaVazio
+    ``` 
+    1. estaVazio
+    ```
 1. No contexto de orientação à objetos, o que é um objeto? Em que momento existe um objeto? Quando ele deixa de existir?
     > É uma instância de uma classe. @TODO
 1. Qual é o objetivo do operador `new`?
@@ -139,7 +143,7 @@
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
     > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilizades são: \
     > + público: visível em qualquer classe \
-    > # protegido: visivel para as classes filhas \
+    > \# protegido: visivel para as classes filhas \
     > - privado: visível somente dentro da classe \
     Nome da classe | 
     ------------ | 
