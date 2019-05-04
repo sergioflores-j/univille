@@ -143,33 +143,35 @@
     - Atributos
     - Métodos
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
-    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do atributo em camelCase.
+    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do atributo em camelCase e o tipo.
 
     | Nome da classe |
     | -------------- |
-    | - nome         |
+    | - nome: String |
 
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
-    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do método em camelCase e os parenteses.
+    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do método em camelCase e os parenteses. \
+    > Caso haja um retorno, o mesmo deverá ser informado o tipo. \
+    > Se houver parâmetros, os mesmos devem ser informados separados por virgula dentro dos parenteses.
     
-    | Nome da classe |
-    | -------------- |
-    | - nome         |
-    | + getNome() <br> + setNome() |
+    | Nome da classe                                   |
+    | ------------------------------------------------ |
+    | - nome: String                                   |
+    | + getNome(): String <br> + setNome(nome: String) |
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
     > Utilizando o nome da classe.
 
-    | Aluno                                       |
-    | ------------------------------------------- |
-    | - nome                                      |
-    | + Aluno() <br> + getNome() <br> + setNome() |
+    | Aluno                                                           |
+    | --------------------------------------------------------------- |
+    | - nome: String                                                  |
+    | + Aluno() <br> + getNome(): String <br> + setNome(nome: String) |
 
     > Ou utilizando o nome `constructor`
 
-    | Aluno                                             |
-    | ------------------------------------------------- |
-    | - nome                                            |
-    | + constructor() <br> + getNome() <br> + setNome() |
+    | Aluno                                                                 |
+    | --------------------------------------------------------------------- |
+    | - nome: String                                                        |
+    | + constructor() <br> + getNome(): String <br> + setNome(nome: String) |
     
 1. Quais são os símbolos utilizados no diagrama de classe UML para representar os modificadores de acessos ao atributos e métodos? Crie um exemplo.
     > Os modificadores de acessos são: \
@@ -178,15 +180,15 @@
     > \- privado: visível somente dentro da classe \
     > \~ default: Modificador de acesso padrão, usado quando nenhum for definido. Visível para todas as classes dentro do pacote
 
-    | Aluno                                |
-    | ------------------------------------ |
-    | - nome <br> + matricula <br> # idade |
+    | Aluno                                                     |
+    | --------------------------------------------------------- |
+    | - nome: String <br> + matricula: String <br> # idade: int |
 1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
     
-    | Cliente                                                                                                 |
-    | ------------------------------------------------------------------------------------------------------- |
-    | - nome <br> - email <br> - telefone                                                                     |
-    | + getNome() <br> + setNome() <br> + getEmail() <br> + setEmail() <br> + getTelefone() <br> + setNome()  |
+    | Cliente                                                                                                                                                                      |
+    | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | - nome: String <br> - email: String <br> - telefone: String                                                                                                                  |
+    | + getNome(): String <br> + setNome(nome: String) <br> + getEmail(): String <br> + setEmail(email: String) <br> + getTelefone(): String <br> + setTelefone(telefone: String)  |
 
 1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
     ```java
@@ -213,5 +215,13 @@
         public void setTelefone(String telefone) {
             this.telefone = telefone;
         }
+    }
+    ```
+1. Desenvolva o código java das classes do apresentadas no diagrama de classes UML abaixo:
+    ![ex1_q31_UML](images/ex1_q31_UML.png)
+    ```java
+    // Produto.java
+    public class Produto {
+        private String nome
     }
     ```
