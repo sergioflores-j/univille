@@ -158,16 +158,19 @@
     | + getNome() <br> + setNome() |
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
     > Utilizando o nome da classe.
-    | Aluno          |
-    | -------------- |
-    | - nome         |
+
+    | Aluno                                       |
+    | ------------------------------------------- |
+    | - nome                                      |
     | + Aluno() <br> + getNome() <br> + setNome() |
 
     > Ou utilizando o nome `constructor`
-    | Aluno          |
-    | -------------- |
-    | - nome         |
+
+    | Aluno                                             |
+    | ------------------------------------------------- |
+    | - nome                                            |
     | + constructor() <br> + getNome() <br> + setNome() |
+    
 1. Quais são os símbolos utilizados no diagrama de classe UML para representar os modificadores de acessos ao atributos e métodos? Crie um exemplo.
     > Os modificadores de acessos são: \
     > \+ público: visível em qualquer classe \
@@ -179,9 +182,9 @@
     | ------------------------------------ |
     | - nome <br> + matricula <br> # idade |
 1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
-    | Cliente                              |
-    | ------------------------------------ |
-    | - nome <br> - email <br> - telefone  |
+    | Cliente                                                                                                 |
+    | ------------------------------------------------------------------------------------------------------- |
+    | - nome <br> - email <br> - telefone                                                                     |
     | + getNome() <br> + setNome() <br> + getEmail() <br> + setEmail() <br> + getTelefone() <br> + setNome()  |
 1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
     ```java
