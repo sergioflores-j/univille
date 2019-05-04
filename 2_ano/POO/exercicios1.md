@@ -242,7 +242,7 @@
         public boolean isEqual(Password p) {
             boolean equal = false;
 
-            if (p.value === this.value) {
+            if (p.value == this.value) {
                 equal = true;
             }
 
@@ -265,7 +265,6 @@
 
 1. Desenvolva o diagrama de classe dos códigos Java abaixo.
     ```java
-
     public class Livro {
         private String nome;
         public String getNome() {
@@ -298,3 +297,21 @@
         }
     }
     ```
+    | Livro                                            |
+    | ------------------------------------------------ |
+    | - nome: String                                   |
+    | + getNome(): String <br> + setNome(nome: String) |
+
+    | ContaCorrente                                                                           |
+    | --------------------------------------------------------------------------------------- |
+    | - saldo: double                                                                         |
+    | + sacar(valor: double): double <br> + depositar(valor: double) <br> - recalcularSaldo() |
+
+    | Par                                  |
+    | -------------------------------------|
+    | + chave: String <br> + valor: String |
+
+    | Impressora                       |
+    | -------------------------------- |
+    |                                  |
+    | + imprimir(documento: Documento) |
