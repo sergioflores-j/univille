@@ -249,7 +249,7 @@
             return equal;
         }
     }
-    
+
     // Animal.java
     public class Animal {
         private boolean alive;
@@ -259,6 +259,42 @@
         }
         private void die() {
             this.alive = false;
+        }
+    }
+    ```
+
+1. Desenvolva o diagrama de classe dos códigos Java abaixo.
+    ```java
+
+    public class Livro {
+        private String nome;
+        public String getNome() {
+            return nome;
+        }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+    }
+
+    public class ContaCorrente {
+        private double saldo;
+        public double sacar(double valor) {
+            return 0.0;
+        }
+        public void depositar(double valor) {
+            this.saldo = saldo;
+        }
+        private void recalcularSaldo() {
+        }
+    }
+
+    public class Par {
+        public String chave;
+        public String valor;
+    }
+
+    public class Impressora {
+        public void imprimir(Documento documento) {
         }
     }
     ```
