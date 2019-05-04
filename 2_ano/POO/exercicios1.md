@@ -218,7 +218,7 @@
     }
     ```
 1. Desenvolva o código java das classes do apresentadas no diagrama de classes UML abaixo:
-    ![ex1_q31_UML](images/ex1_q31_UML.png)
+    ![ex1_q31_uml](images/ex1_q31_uml.png)
     ```java
     // Produto.java
     public class Produto {
