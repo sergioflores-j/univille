@@ -222,6 +222,43 @@
     ```java
     // Produto.java
     public class Produto {
-        private String nome
+        private String nome;
+
+        public String getNome() {
+            return this.nome;
+        }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+    }
+    
+    // Password.java
+    public class Password {
+        private String value;
+
+        public Password(String value) {
+            this.value = value;
+        }
+        public boolean isEqual(Password p) {
+            boolean equal = false;
+
+            if (p.value === this.value) {
+                equal = true;
+            }
+
+            return equal;
+        }
+    }
+    
+    // Animal.java
+    public class Animal {
+        private boolean alive;
+
+        public boolean isAlive() {
+            return this.alive;
+        }
+        private void die() {
+            this.alive = false;
+        }
     }
     ```
