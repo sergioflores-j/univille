@@ -21,6 +21,7 @@
     1. Carroeletrico
     1. CarroEletrico
     1. carro_eletrico
+
     ```
     4. CarroEletrico
     ```
@@ -46,11 +47,12 @@
     1. EstaVazio
     1. Estavazio
     1. Esta_vazio
+
     ``` 
     1. estaVazio
     ```
 1. No contexto de orientação à objetos, o que é um objeto? Em que momento existe um objeto? Quando ele deixa de existir?
-    > É uma instância de uma classe. @TODO
+    > É uma instância de uma classe. Existe a partir do momento em que é instanciado a classe. Deixa de existir quando o programa é finalizado ou o objeto é excluído da memória.
 1. Qual é o objetivo do operador `new`?
     > Instanciar um objeto de uma classe (chamar o método construtor).
 1. O que é o construtor? Qual é o seu objetivo? Qual deve ser o seu nome? Cite um exemplo.
@@ -141,27 +143,70 @@
     - Atributos
     - Métodos
 1. Qual é o padrão utilizado para representar um atributo no diagrama de classe UML? Crie um exemplo.
-    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do atributo em camelCase. As possiveis visibilidades são: \
-    > \+ público: visível em qualquer classe \
-    > \# protegido: visivel para as classes filhas \
-    > \- privado: visível somente dentro da classe
+    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do atributo em camelCase.
 
     | Nome da classe |
     | -------------- |
     | - nome         |
 
 1. Qual é o padrão utilizado para representar um método no diagrama de classe UML? Crie um exemplo.
-    > Utiliza-se o padrão de trazer a visibilidade seguido pelo nome do método em camelCase e os parenteses. As visibilidades são as mesmas dos atributos.
+    > Utiliza-se o padrão de trazer a visibilidade (modificador de acesso) seguido pelo nome do método em camelCase e os parenteses.
     
     | Nome da classe |
     | -------------- |
     | - nome         |
     | + getNome() <br> + setNome() |
 1. Como o construtor de uma classe pode ser diferenciado no diagrama de classe UML? Crie um exemplo.
-    > @TODO
+    > Utilizando o nome da classe.
+    | Aluno          |
+    | -------------- |
+    | - nome         |
+    | + Aluno() <br> + getNome() <br> + setNome() |
+
+    > Ou utilizando o nome `constructor`
+    | Aluno          |
+    | -------------- |
+    | - nome         |
+    | + constructor() <br> + getNome() <br> + setNome() |
 1. Quais são os símbolos utilizados no diagrama de classe UML para representar os modificadores de acessos ao atributos e métodos? Crie um exemplo.
-    > @TODO
+    > Os modificadores de acessos são: \
+    > \+ público: visível em qualquer classe \
+    > \# protegido: visivel para as classes filhas \
+    > \- privado: visível somente dentro da classe \
+    > \~ default: Modificador de acesso padrão, usado quando nenhum for definido. Visível para todas as classes dentro do pacote
+
+    | Aluno                                |
+    | ------------------------------------ |
+    | - nome <br> + matricula <br> # idade |
 1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
-    > @TODO
+    | Cliente                              |
+    | ------------------------------------ |
+    | - nome <br> - email <br> - telefone  |
+    | + getNome() <br> + setNome() <br> + getEmail() <br> + setEmail() <br> + getTelefone() <br> + setNome()  |
 1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
-    > @TODO
+    ```java
+    public class Cliente {
+        private String nome;
+        private String email;
+        private String telefone;
+
+        public String getNome() {
+            return this.nome;
+        }
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+        public String getEmail() {
+            return this.email;
+        }
+        public void setEmail(String email) {
+            this.email = email;
+        }
+        public String getTelefone() {
+            return this.telefone;
+        }
+        public void setTelefone(String telefone) {
+            this.telefone = telefone;
+        }
+    }
+    ```
