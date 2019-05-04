@@ -315,3 +315,57 @@
     | -------------------------------- |
     |                                  |
     | + imprimir(documento: Documento) |
+
+1. O que é o estado de um objeto? Cite um exemplo com a classe Aluno com os atributos nome, idade, matrícula e curso. Utilize o diagrama de estado de objeto.
+    > @TODO
+1. Qual é o estado do objeto da classe Dog quando é inicializado? Desenvolva o diagrama de objetos.
+    > @TODO
+    ```java
+    public class Dog {
+        private int years;
+        private String name;
+        private boolean alive;
+        //Getters e setters suprimido
+    }
+    ```
+1. Qual é o estado do objeto dog no final da execução do método main? Desenvolva o diagrama de objetos.
+    > @TODO
+    ```java
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.setYears(10);
+        dog.setName("Spike");
+        dog.setAlive(true);
+    }
+    ```
+
+1. Qual é o estado do objeto pug e buldog após a execução da linha 6? Desenvolva o diagrama de objetos.
+    > @TODO
+    ```java
+    Dog pug = new Dog();
+    Dog buldog = new Dog();
+    pug.setName("Spoke")
+    buldog.setName("Spike");
+    pug.setAlive(true);
+    pug.setYears(2);
+    buldog.setName("Floquinho");
+    pug.setYears(1);
+    ```
+
+1. Analise o código abaixo. Verifique se existem problemas, caso sim, indique o problema e sugere as correções.
+    > @TODO
+    ```java
+    public class Cat {
+        private String name;
+        public double weight;
+        // Getters e Setters suprimidos
+    }
+
+    public class Main {
+        public static void main(String args[]) {
+            Cat c = new Cat();
+            c.weight = 3.5;
+            c.name = "BlackCat";
+        }
+    }
+    ```
