@@ -317,9 +317,13 @@
     | + imprimir(documento: Documento) |
 
 1. O que é o estado de um objeto? Cite um exemplo com a classe Aluno com os atributos nome, idade, matrícula e curso. Utilize o diagrama de estado de objeto.
-    > @TODO
+    > O estado de um objeto é definido pelos valores de seus atributos em um determinado instante de tempo.
+
+    | aluno1: Aluno                                                                    |
+    | -------------------------------------------------------------------------------- |
+    | nome = "João"<br>idade = 10<br>matricula = 1<br>curso = "Sistemas de Informação" |
+
 1. Qual é o estado do objeto da classe Dog quando é inicializado? Desenvolva o diagrama de objetos.
-    > @TODO
     ```java
     public class Dog {
         private int years;
@@ -328,8 +332,13 @@
         //Getters e setters suprimido
     }
     ```
+    > Por não ter um construtor que inicialize o objeto com valores, os valores default serão:
+
+    | dog1: Dog                                 |
+    | ----------------------------------------- |
+    | name = null<br>years = 0<br>alive = false |
+
 1. Qual é o estado do objeto dog no final da execução do método main? Desenvolva o diagrama de objetos.
-    > @TODO
     ```java
     public static void main(String[] args) {
         Dog dog = new Dog();
@@ -338,9 +347,11 @@
         dog.setAlive(true);
     }
     ```
+    | dog: Dog                                     |
+    | -------------------------------------------- |
+    | name = "Spike"<br>years = 10<br>alive = true |
 
 1. Qual é o estado do objeto pug e buldog após a execução da linha 6? Desenvolva o diagrama de objetos.
-    > @TODO
     ```java
     Dog pug = new Dog();
     Dog buldog = new Dog();
@@ -351,9 +362,15 @@
     buldog.setName("Floquinho");
     pug.setYears(1);
     ```
+    | pug: Dog                                     |
+    | -------------------------------------------- |
+    | name = "Spoke"<br>years = 1<br>alive = true  |
+
+    | buldog: Dog                                      |
+    | ------------------------------------------------ |
+    | name = "Floquinho"<br>years = 0<br>alive = false |
 
 1. Analise o código abaixo. Verifique se existem problemas, caso sim, indique o problema e sugere as correções.
-    > @TODO
     ```java
     public class Cat {
         private String name;
@@ -366,6 +383,19 @@
             Cat c = new Cat();
             c.weight = 3.5;
             c.name = "BlackCat";
+        }
+    }
+    ```
+    > O atributo `nome` é privado e está sendo alterado de forma direta. Correção:
+
+    ```java
+    // classe Cat suprimida
+
+    public class Main {
+        public static void main(String[] args) {
+            Cat c = new Cat();
+            c.weight = 3.5;
+            c.setName("BlackCat");
         }
     }
     ```
