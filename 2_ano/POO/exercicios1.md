@@ -182,10 +182,12 @@
     | ------------------------------------ |
     | - nome <br> + matricula <br> # idade |
 1. Considere a classe Cliente, com os atributos nome, email e telefone com os respectivos métodos getters e setters. Desenvolva o diagrama de classe UML.
+    
     | Cliente                                                                                                 |
     | ------------------------------------------------------------------------------------------------------- |
     | - nome <br> - email <br> - telefone                                                                     |
     | + getNome() <br> + setNome() <br> + getEmail() <br> + setEmail() <br> + getTelefone() <br> + setNome()  |
+
 1. Considere a classe Cliente apresentado no Problema 29, e desenvolva o código Java correspondente.
     ```java
     public class Cliente {
