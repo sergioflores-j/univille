@@ -28,6 +28,28 @@ public class Lista {
 		return noticiasFiltradas;
 	}
 	
+	public void adicionarNoticia(Noticia noticia) {
+		List<Noticia> novaLista = this.getNoticias();
+		
+		novaLista.add(noticia);
+		
+		this.setNoticias(novaLista);
+	}
+	
+	public void removerNoticia(Noticia noticia) {
+		List<Noticia> novaLista = this.getNoticias();
+		
+		/* @todo - Verificar se .remove funciona passando o objeto noticia */
+		for (int i = 0; i < this.getNoticias().size(); i++) {
+			Noticia n = this.getNoticias().get(i);
+			if (n.equals(noticia)) {
+				novaLista.remove(i);
+			}
+		}
+		
+		this.setNoticias(novaLista);
+	}
+	
 	public List<Noticia> getNoticias() {
 		return noticias;
 	}

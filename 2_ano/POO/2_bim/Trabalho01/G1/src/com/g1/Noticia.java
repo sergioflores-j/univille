@@ -85,4 +85,42 @@ public class Noticia {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dataCriacao == null) ? 0 : dataCriacao.hashCode());
+		result = prime * result + ((subTitulo == null) ? 0 : subTitulo.hashCode());
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Noticia other = (Noticia) obj;
+		if (dataCriacao == null) {
+			if (other.dataCriacao != null)
+				return false;
+		} else if (!dataCriacao.equals(other.dataCriacao))
+			return false;
+		if (subTitulo == null) {
+			if (other.subTitulo != null)
+				return false;
+		} else if (!subTitulo.equals(other.subTitulo))
+			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
+		return true;
+	}
+	
 }
