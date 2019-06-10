@@ -5,6 +5,7 @@ public class Autor extends Usuario {
 
 	public Autor(String nome, String email, String senha, Plano plano, Estado estado, int publicacoes) {
 		super(nome, email, senha, plano, estado);
+		this.publicacoes = publicacoes;
 	}
 
 	public void novaPublicacao() {
@@ -13,7 +14,7 @@ public class Autor extends Usuario {
 
 	@Override
 	public String obterInformacoes() {
-		return "Nome: " + this.getNome() + "\n" + "Estado: " + this.getEstado();
+		return this.getNome() + ", em: " + this.getEstado();
 	}
 
 	public int getPublicacoes() {

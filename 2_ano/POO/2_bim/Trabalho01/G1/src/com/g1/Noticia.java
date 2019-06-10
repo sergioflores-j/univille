@@ -28,8 +28,9 @@ public class Noticia {
 		System.out.println("-------------------");
 		System.out.println(this.getTitulo());
 		System.out.println(this.getSubTitulo());
-		System.out.println("Criado em:" + this.getDataCriacaoFormatada());
-		System.out.println("Por:" + this.getAutor().obterInformacoes());
+		System.out.println("Criado em: " + this.getDataCriacaoFormatada());
+		System.out.println("Por: " + this.getAutor().obterInformacoes());
+		System.out.println("Em: " + this.getCategoria().getNome());
 		System.out.println(this.getConteudo());
 		System.out.println("-------------------");
 	}

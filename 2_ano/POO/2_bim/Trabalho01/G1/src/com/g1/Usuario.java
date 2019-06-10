@@ -6,6 +6,7 @@ public class Usuario {
 	private String senha;
 	private Plano plano;
 	private Estado estado;
+	private Boolean isLogado = false;
 
 	public Usuario(String nome, String email, String senha, Plano plano, Estado estado) {
 		super();
@@ -17,14 +18,20 @@ public class Usuario {
 	}
 
 	public void realizarLogin(String email, String senha) {
-		if (this.getEmail() == email && this.getSenha() == senha) {
+		if (this.getIsLogado() == true) {
+			System.out.println("Usuário já está logado!");
+		} else if (this.getEmail() == email && this.getSenha() == senha) {
 			System.out.println("Usuário logado com sucesso!");
+			this.setIsLogado(true);
 		} else {
 			System.out.println("Usuário e/ou senha inválidos!");
+			this.setIsLogado(false);
 		}
 	}
 	
 	public String obterInformacoes() {
+		if (this.getIsLogado() == false) return "";
+		
 		return "Nome: " + this.getNome() + "\n" 
 				+ "Email: " + this.getEmail() + "\n" 
 				+ "Plano: " + this.getPlano() + "\n" 
@@ -69,6 +76,14 @@ public class Usuario {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public Boolean getIsLogado() {
+		return isLogado;
+	}
+
+	private void setIsLogado(Boolean isLogado) {
+		this.isLogado = isLogado;
 	}
 
 }
