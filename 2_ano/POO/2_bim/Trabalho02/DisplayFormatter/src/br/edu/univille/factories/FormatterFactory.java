@@ -1,27 +1,36 @@
 package br.edu.univille.factories;
 
-import br.edu.unville.formatters.CalendarioFormatter;
-import br.edu.unville.formatters.Formatter;
-import br.edu.unville.formatters.RadioFormatter;
-import br.edu.unville.formatters.RadioRelogioFormatter;
-import br.edu.unville.formatters.TemperaturaFormatter;
+import br.edu.univille.formatters.CalendarioFormatter;
+import br.edu.univille.formatters.Formatter;
+import br.edu.univille.formatters.RadioFormatter;
+import br.edu.univille.formatters.RadioRelogioFormatter;
+import br.edu.univille.formatters.TemperaturaFormatter;
 
-public class FormatterFactory {
-	public static Formatter<?> getFormatter(String formatter) {
-		if (formatter == null) {
-			return null;
-		}
-		
-		if (formatter.equalsIgnoreCase("RADIO_RELOGIO")) {
+public enum FormatterFactory {
+	RADIO_RELOGIO {
+		@Override
+		public Formatter<?> getInstance() {
 			return new RadioRelogioFormatter();
-		} else if (formatter.equalsIgnoreCase("RADIO")) {
+		}
+	},
+	RADIO {
+		@Override
+		public Formatter<?> getInstance() {
 			return new RadioFormatter();
-		} else if (formatter.equalsIgnoreCase("TEMPERATURA")) {
+		}
+	},
+	TEMPERATURA {
+		@Override
+		public Formatter<?> getInstance() {
 			return new TemperaturaFormatter();
-		} else if (formatter.equalsIgnoreCase("CALENDARIO")) {
+		}
+	},
+	CALENDARIO {
+		@Override
+		public Formatter<?> getInstance() {
 			return new CalendarioFormatter();
 		}
+	};
 
-		return null;
-	}
+	public abstract Formatter<?> getInstance();
 }

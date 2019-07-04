@@ -1,8 +1,8 @@
 package br.edu.univille.displays;
 
 import br.edu.univille.factories.FormatterFactory;
+import br.edu.univille.formatters.TemperaturaFormatter;
 import br.edu.univille.models.Temperatura;
-import br.edu.unville.formatters.TemperaturaFormatter;
 
 public class TemperaturaDisplay extends Display<TemperaturaFormatter> {
 	private String temperaturaFormatada;
@@ -13,10 +13,10 @@ public class TemperaturaDisplay extends Display<TemperaturaFormatter> {
 	public void create(Temperatura temperatura) {
 		this.setTemperaturaFormatada(temperatura);
 	}
-	
+
 	@Override
 	public void show() {
-		System.out.println("Temperatura: " + this.getTemperaturaFormatada());
+		System.out.println("Temperatura: " + this.getTemperaturaFormatada() + "\n");
 	}
 
 	public String getTemperaturaFormatada() {
@@ -24,7 +24,7 @@ public class TemperaturaDisplay extends Display<TemperaturaFormatter> {
 	}
 
 	public void setTemperaturaFormatada(Temperatura temperatura) {
-		TemperaturaFormatter temperaturaFormatter = (TemperaturaFormatter) FormatterFactory.getFormatter("TEMPERATURA");
+		TemperaturaFormatter temperaturaFormatter = (TemperaturaFormatter) FormatterFactory.TEMPERATURA.getInstance();
 		this.temperaturaFormatada = temperaturaFormatter.formatter(temperatura);
 	}
 

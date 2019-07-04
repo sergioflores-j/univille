@@ -6,22 +6,31 @@ import br.edu.univille.displays.RadioDisplay;
 import br.edu.univille.displays.RadioRelogioDisplay;
 import br.edu.univille.displays.TemperaturaDisplay;
 
-public class DisplayFactory {
-	public static Display<?> getDisplay(String display) {
-		if (display == null) {
-			return null;
-		}
-		
-		if (display.equalsIgnoreCase("RADIO_RELOGIO")) {
+public enum DisplayFactory {
+	RADIO_RELOGIO {
+		@Override
+		public Display<?> getInstance() {
 			return new RadioRelogioDisplay();
-		} else if (display.equalsIgnoreCase("RADIO")) {
+		}
+	},
+	RADIO {
+		@Override
+		public Display<?> getInstance() {
 			return new RadioDisplay();
-		} else if (display.equalsIgnoreCase("TEMPERATURA")) {
+		}
+	},
+	TEMPERATURA {
+		@Override
+		public Display<?> getInstance() {
 			return new TemperaturaDisplay();
-		} else if (display.equalsIgnoreCase("CALENDARIO")) {
+		}
+	},
+	CALENDARIO {
+		@Override
+		public Display<?> getInstance() {
 			return new CalendarioDisplay();
 		}
-		
-		return null;
-	}
+	};
+
+	public abstract Display<?> getInstance();
 }

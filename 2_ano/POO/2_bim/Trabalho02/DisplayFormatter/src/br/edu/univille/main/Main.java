@@ -13,22 +13,22 @@ import br.edu.univille.models.Temperatura;
 public class Main {
 	public static void main(String[] args) {
 		// Rádio Relógio
-		RadioRelogioDisplay radioRelogioDisplay = (RadioRelogioDisplay) DisplayFactory.getDisplay("RADIO_RELOGIO");
+		RadioRelogioDisplay radioRelogioDisplay = (RadioRelogioDisplay) DisplayFactory.RADIO_RELOGIO.getInstance();
 		radioRelogioDisplay.create(new Horario(0, 5));
 		radioRelogioDisplay.show();
-		
+
 		// Rádio
-		RadioDisplay radioDisplay = (RadioDisplay) DisplayFactory.getDisplay("RADIO");
+		RadioDisplay radioDisplay = (RadioDisplay) DisplayFactory.RADIO.getInstance();
 		radioDisplay.create(new EstacaoRadio(105.7));
 		radioDisplay.show();
-		
+
 		// Temperatura
-		TemperaturaDisplay temperaturaDisplay = (TemperaturaDisplay) DisplayFactory.getDisplay("TEMPERATURA");
+		TemperaturaDisplay temperaturaDisplay = (TemperaturaDisplay) DisplayFactory.TEMPERATURA.getInstance();
 		temperaturaDisplay.create(new Temperatura(31.1));
 		temperaturaDisplay.show();
-		
+
 		// Calendario
-		CalendarioDisplay calendarioDisplay = (CalendarioDisplay) DisplayFactory.getDisplay("CALENDARIO");
+		CalendarioDisplay calendarioDisplay = (CalendarioDisplay) DisplayFactory.CALENDARIO.getInstance();
 		calendarioDisplay.create(new Calendario(31, 12, 2019));
 		calendarioDisplay.show();
 	}

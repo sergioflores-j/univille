@@ -1,8 +1,8 @@
 package br.edu.univille.displays;
 
 import br.edu.univille.factories.FormatterFactory;
+import br.edu.univille.formatters.CalendarioFormatter;
 import br.edu.univille.models.Calendario;
-import br.edu.unville.formatters.CalendarioFormatter;
 
 public class CalendarioDisplay extends Display<CalendarioFormatter>	{
 	private String calendarioFormatado;
@@ -16,7 +16,7 @@ public class CalendarioDisplay extends Display<CalendarioFormatter>	{
 
 	@Override
 	public void show() {
-		System.out.println("Calendário: " + this.getCalendarioFormatado());
+		System.out.println("Calendário: " + this.getCalendarioFormatado() + "\n");
 	}
 
 	public String getCalendarioFormatado() {
@@ -24,7 +24,7 @@ public class CalendarioDisplay extends Display<CalendarioFormatter>	{
 	}
 
 	public void setCalendarioFormatado(Calendario calendario) {
-		CalendarioFormatter calendarioFormatter = (CalendarioFormatter) FormatterFactory.getFormatter("CALENDARIO");
+		CalendarioFormatter calendarioFormatter = (CalendarioFormatter) FormatterFactory.CALENDARIO.getInstance();
 		this.calendarioFormatado = calendarioFormatter.formatter(calendario);
 	}
 }
