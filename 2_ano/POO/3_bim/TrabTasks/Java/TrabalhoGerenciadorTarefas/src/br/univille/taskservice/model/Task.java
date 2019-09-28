@@ -1,8 +1,11 @@
 package br.univille.taskservice.model;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Task {
+	private int id;
 	private String title;
 	private Date createdAt;
 	private Date updatedAt;
@@ -12,15 +15,20 @@ public class Task {
 	private Date dueDate;
 	private User user;
 
-	public Task() {}
-	
+	public Task() {
+	}
+
 	public Task(String title, User user) {
 		this.title = title;
 		this.user = user;
 	}
-	
-	public Task(String title, boolean completed, boolean deleted, int priority, Date dueDate, User user) {
+
+	public Task(int id, String title, Date createdAt, Date updatedAt, boolean completed, boolean deleted, int priority,
+			Date dueDate, User user) {
+		this.id = id;
 		this.title = title;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 		this.completed = completed;
 		this.deleted = deleted;
 		this.priority = priority;
@@ -63,6 +71,16 @@ public class Task {
 	public Date getDueDate() {
 		return dueDate;
 	}
+	
+	public Timestamp getDueDateTimestamp() {
+		if (dueDate == null) 
+			return null;
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dueDate);
+		cal.set(Calendar.MILLISECOND, 0);
+		return new Timestamp(cal.getTimeInMillis());
+	}
 
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
@@ -90,6 +108,21 @@ public class Task {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", title=" + title + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", completed=" + completed + ", deleted=" + deleted + ", priority=" + priority + ", dueDate="
+				+ dueDate + ", user=" + user + "]";
 	}
 
 }
