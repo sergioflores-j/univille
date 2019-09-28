@@ -1,72 +1,110 @@
 (() => {
-  const tipos = ['fifo', 'aleatorio', 'lfu'];
-  tipos.forEach(tipo => {
-    const parameters = init();
-    execute({ tipo, ...parameters });
+  const algoritmos = ['fifo', 'aleatorio', 'lfu'];
+  algoritmos.forEach(algoritmo => {
+    const paginas = [
+      { id: 1, contador: 1 },
+      { id: 2, contador: 1 },
+      { id: 3, contador: 1 },
+      { id: 4, contador: 1 },
+      { id: 5, contador: 1 },
+      { id: 6, contador: 1 },
+      { id: 7, contador: 1 },
+    ];
+
+    const variaveis = {
+      paginas: [...paginas],
+      memoriaPrincipal: [],
+      tamanhoMemoriaPrincipal: 4, // a memória principal tem apenas 4 espaços
+      fila: [1, 2, 5, 7, 1, 4, 5, 6, 1, 4, 2],
+    };
+
+    executar({ algoritmo, ...variaveis });
   })
 })();
 
-function init() {
-  return {
-    paginas: paginasIniciais(),
-    paginasRequisitadas: [1, 2, 5, 7, 1, 4, 5, 6],
-    memoriaPrincipal: [], // a memória principal tem apenas 4 espaços
-    limiteMemoriaPrincipal: 4,
-    memoriaVirtual: paginasIniciais(), // inicialmente todas as páginas estão na memória virtual
-  };
-}
-
-function paginasIniciais() {
-  return [
-    { id: 1, uso: 0 },
-    { id: 2, uso: 0 },
-    { id: 3, uso: 0 },
-    { id: 4, uso: 0 },
-    { id: 5, uso: 0 },
-    { id: 6, uso: 0 },
-    { id: 7, uso: 0 },
-  ];
-}
-
-function execute({
+function executar({
+  algoritmo,
   paginas,
   memoriaPrincipal,
-  paginasRequisitadas,
-  memoriaVirtual,
-  limiteMemoriaPrincipal,
-  tipo,
+  fila,
+  tamanhoMemoriaPrincipal,
 } = {}) {
-  paginas.forEach(pagina => {
-    if (memoriaPrincipal.find(i => i.id === pagina)) return;
+  console.log('-----------------------------');
+  console.log('Executando o algoritmo:', algoritmo);
+  console.log();
 
-    // substitui
-    if (memoriaPrincipal.length >= limiteMemoriaPrincipal) {
-      let particao;
-
-      if (tipo === 'fifo') particao = fifo();
-      else if (tipo === 'aleatorio') particao = aleatorio({ paginas, pagina });
-      else if (tipo === 'lfu') particao = lfu({
-        paginas,
-        memoriaVirtual,
-        memoriaPrincipal,
-        paginasRequisitadas,
-        limiteMemoriaPrincipal,
-      });
-    } else {
-      // a loca
-      memoriaPrincipal.push(pagina);
+  let pageFaults = 0;
+  fila.forEach(idPagina => {
+    const paginaNaMemoria = memoriaPrincipal.find(i => i.id === idPagina);
+    if (paginaNaMemoria) {
+      paginaNaMemoria.contador++;
+      return;
     }
+
+    const pagina = paginas.find(p => p.id === idPagina);
+
+    let particao;
+
+    // procura uma posição para ser substituida
+    if (memoriaPrincipal.length >= tamanhoMemoriaPrincipal) {
+      if (algoritmo === 'fifo') {
+        particao = fifo();
+      } else if (algoritmo === 'aleatorio') {
+        particao = aleatorio({ tamanhoMemoriaPrincipal });
+      } else if (algoritmo === 'lfu') {
+        particao = lfu({ memoriaPrincipal });
+      }
+
+      console.log('Page fault! Removendo a página:', memoriaPrincipal[particao], '- Alocando a página:', pagina);
+      // substitui
+      removePagina({ memoriaPrincipal, particao });
+    }
+
+    // aloca
+    inserePagina({ memoriaPrincipal, pagina });
+
+    if (Number.isNaN(Number(particao))) console.log('Page fault! Alocando a página:', pagina);
+
+    // Atribui ao contador de page faults
+    pageFaults++;
   });
+
+  console.log();
+  console.log('Ao todo foram', pageFaults, 'page faults para este algoritmo.');
+  console.log('Memória final:', memoriaPrincipal);
+  console.log();
 }
 
+function inserePagina({ memoriaPrincipal = [], pagina }) {
+  memoriaPrincipal.push({ ...pagina });
+}
+
+function removePagina({ memoriaPrincipal, particao }) {
+  // Posição, quantidade de itens
+  memoriaPrincipal.splice(particao, 1);
+}
+
+/**
+ * @returns {number} a primeira posição da fila
+ */
 function fifo() {
   return 0;
 }
 
-function aleatorio({ limiteMemoriaPrincipal } = {}) {
-  return Math.floor((Math.random() * limiteMemoriaPrincipal) + 1);
+/** 
+ * @returns {number} uma posição aleatória
+ */
+function aleatorio({ tamanhoMemoriaPrincipal } = {}) {
+  return Math.floor(Math.random() * tamanhoMemoriaPrincipal);
 }
 
-function lfu({ paginas, memoriaVirtual, memoriaPrincipal, paginasRequisitadas, limiteMemoriaPrincipal, } = {}) {
-  
+/**
+ * @returns {number} posição do primeiro item com menor contador
+ */
+function lfu({ memoriaPrincipal } = {}) {
+  return memoriaPrincipal.reduce((paginaMenosUsada, pagina, index) => {
+    if (index === 0 || pagina.contador < paginaMenosUsada.contador) return { ...pagina, index };
+
+    return paginaMenosUsada;
+  }, {}).index;
 }
