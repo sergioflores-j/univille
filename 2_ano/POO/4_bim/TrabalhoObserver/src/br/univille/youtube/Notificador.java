@@ -8,7 +8,7 @@ import br.univille.interfaces.Subject;
 
 public class Notificador implements Subject {
 	private List<Observer> observers;
-	private String oferta;
+	private String video;
 	
 	public Notificador() {
 		observers = new ArrayList<Observer>();
@@ -27,12 +27,12 @@ public class Notificador implements Subject {
 	@Override
 	public void notifyObservers() {
 		for(Observer o : observers) {
-			o.update(this, oferta);
+			o.update(this, video);
 		}
 	}
 	
 	public void videoNovo(String titulo, double duracao) {
-		oferta = "Video: " + titulo + ", Duração:" + duracao + " min";
+		video = "Video: " + titulo + ", Duração:" + duracao + " min";
 		
 		// Após a modificacao, avisa os observadores
 		notifyObservers();
