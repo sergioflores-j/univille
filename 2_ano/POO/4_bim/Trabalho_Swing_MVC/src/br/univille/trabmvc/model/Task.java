@@ -3,6 +3,7 @@ package br.univille.trabmvc.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.univille.trabmvc.dao.TaskDao;
 import br.univille.trabmvc.utils.Observer;
 import br.univille.trabmvc.utils.Subject;
 
@@ -14,6 +15,7 @@ public class Task implements Subject {
 	private int id;
 	private String title;
 	private boolean completed;
+	private TaskDao dao = new TaskDao();
 	private List<Observer> observerList = new ArrayList<Observer>();
 
 	public Task() {
@@ -55,8 +57,8 @@ public class Task implements Subject {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", title=" + title + ", completed=" + completed
-				+ ", observerList=" + observerList + "]";
+		return "Task [id=" + id + ", title=" + title + ", completed=" + completed + ", observerList=" + observerList
+				+ "]";
 	}
 
 	@Override
@@ -79,7 +81,7 @@ public class Task implements Subject {
 	}
 
 	public void delete() {
-		// Apgar no banco
+		dao.delete(this);
 		this.novoRegistro();
 	}
 
@@ -89,10 +91,19 @@ public class Task implements Subject {
 		}
 		// Novo registro
 		if (id == 0) {
-			// insere no banco de dados
+			this.dao.insert(this);
 		} else {
-			// Atualizar no banco de dados
+			this.dao.update(this);
 		}
+
+		this.novoRegistro();
+	}
+
+	public void setValues(Task task) {
+		this.id = task.id;
+		this.title = task.title;
+		this.completed = task.completed;
+
 		notifyObservers();
 	}
 
@@ -100,6 +111,7 @@ public class Task implements Subject {
 		this.id = 0;
 		this.title = "";
 		this.completed = false;
+
 		notifyObservers();
 	}
 

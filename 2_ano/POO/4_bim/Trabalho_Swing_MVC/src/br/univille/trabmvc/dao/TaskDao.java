@@ -20,7 +20,7 @@ public class TaskDao extends BaseDao {
 	 * @param task
 	 */
 	public void insert(Task task) {
-		String sql = " INSERT INTO tasks(" + "title," + "completed)" + "VALUES(?,?,?,?,?,?)";
+		String sql = " INSERT INTO tasks(" + "title," + "completed)" + "VALUES(?,?)";
 
 		try (Connection conn = getConnection();
 				PreparedStatement statement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
@@ -94,6 +94,31 @@ public class TaskDao extends BaseDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Obtem a lista de tasks
+	 */
+	public List<Task> list() {
+		List<Task> list = new ArrayList<>();
+		String sql = "SELECT" + " tasks.id," + " tasks.title," + " tasks.completed" + " FROM tasks";
+
+		try (Connection conn = getConnection(); PreparedStatement statement = conn.prepareStatement(sql)) {
+			ResultSet resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				Task task = new Task();
+				task.setId(resultSet.getInt(1));
+				task.setTitle(resultSet.getString(2));
+				task.setCompleted(resultSet.getBoolean(3));
+
+				list.add(task);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	/**
